@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import Observation
+import os
 
 @Observable
 final class HomeCoordinator: Coordinator {
@@ -17,6 +18,7 @@ final class HomeCoordinator: Coordinator {
     private var cancellables = Set<AnyCancellable>()
     
     var onboardingCoordinator: OnboardingCoordinator?
+    var presentationDetents: Set<PresentationDetent> = [.fraction(0.999), .medium]
     
     @ViewBuilder @MainActor var rootView: some View {
         HomeView(store: HomeViewStore(coordinator: self, screenNumber: 1))
@@ -55,6 +57,8 @@ extension HomeCoordinator {
         case .sheetOnboarding:
             if let onboardingCoordinator {
                 CoordinatedView(onboardingCoordinator)
+//                    .interactiveDismissDisabled()
+                    .presentationDetents(presentationDetents)
             }
         case .coverOnboarding:
             if let onboardingCoordinator {
@@ -87,8 +91,9 @@ extension HomeCoordinator {
         onboardingCoordinator?.parent = self
         onboardingCoordinator?.eventPublisher.sink { [weak self] event in
             switch event {
-            case .dismiss:
-                self?.didFinish()
+            case let .dismiss(dismiss):
+                break
+                
             }
         }
         .store(in: &cancellables)
@@ -118,6 +123,8 @@ extension HomeCoordinator {
 
 extension HomeCoordinator: OnboardingCoordinatorParent {
     func didFinish() {
-        onboardingCoordinator = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.onboardingCoordinator = nil
+        }
     }
 }

@@ -5,8 +5,8 @@
 //  Created by Tomáš Duchoslav on 06.08.2024.
 //
 
-import Foundation
+import SwiftUI
 
 enum OnboardingCoordinatorEvent {
-    case dismiss
+    case dismiss(DismissAction)
 }

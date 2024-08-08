@@ -15,9 +15,10 @@ final class OnboardingViewStore: Store {
     private let coordinator: OnboardingCoordinator
     
     @MainActor
-    init(coordinator: OnboardingCoordinator, screenNumber: Int) {
+    init(coordinator: OnboardingCoordinator, screenNumber: Int, isPushed: Bool) {
         self.coordinator = coordinator
         self.state.screenNumber = screenNumber
+        self.state.isPushed = isPushed
     }
 }
 
@@ -34,8 +35,9 @@ extension OnboardingViewStore {
             
         case .popToRootButtonTapped:
             coordinator.dismissScreen(coordinator.navigationController.screenCount)
-        case .dismissSheet:
-            coordinator.dismissSheet()
+            
+        case let .dismissSheet(dismiss):
+            coordinator.dismissSheet(dismiss: dismiss)
         }
     }
 }

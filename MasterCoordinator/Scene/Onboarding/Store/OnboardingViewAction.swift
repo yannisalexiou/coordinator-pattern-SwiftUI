@@ -5,11 +5,11 @@
 //  Created by Tomáš Duchoslav on 22.07.2024.
 //
 
-import Foundation
+import SwiftUI
 
 enum OnboardingViewAction {
     case nextButtonTapped
     case dismissButtonTapped
     case popToRootButtonTapped
-    case dismissSheet
+    case dismissSheet(DismissAction)
 }

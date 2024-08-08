@@ -17,15 +17,21 @@ final class OnboardingCoordinator: Coordinator {
     
     // MARK: private properties
     private let eventSubject = PassthroughSubject<OnboardingCoordinatorEvent, Never>()
+    private var isPushed: Bool = false
     
     @ViewBuilder @MainActor var rootView: some View {
-        OnboardingView(store: OnboardingViewStore(coordinator: self, screenNumber: 1))
+        OnboardingView(store: OnboardingViewStore(coordinator: self, screenNumber: 1, isPushed: isPushed))
             .navigationDestination(for: OnboardingCoordinatorRoute.self, destination: coordinate(_:))
     }
     
     // MARK: LifeCycle
-    init(navigationController: NavigationController = NavigationController()) {
-        self.navigationController = navigationController
+    init(navigationController: NavigationController? = nil) {
+        if let navigationController {
+            self.navigationController = navigationController
+            self.isPushed = true
+        } else {
+            self.navigationController = NavigationController()
+        }
         print("Init Onboarding")
     }
     
@@ -39,7 +45,7 @@ extension OnboardingCoordinator {
     @ViewBuilder @MainActor func coordinate(_ route: OnboardingCoordinatorRoute) -> some View {
         switch route {
         case let .detail(screenNumber):
-            OnboardingView(store: OnboardingViewStore(coordinator: self, screenNumber: screenNumber))
+            OnboardingView(store: OnboardingViewStore(coordinator: self, screenNumber: screenNumber, isPushed: isPushed))
         }
     }
 }
@@ -54,8 +60,10 @@ extension OnboardingCoordinator {
         navigationController.dismiss(count)
     }
     
-    func dismissSheet() {
-        eventSubject.send(.dismiss)
+    func dismissSheet(dismiss: DismissAction) {
+        dismiss()
+        dismiss()
+        parent?.didFinish()
     }
 }
 

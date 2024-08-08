@@ -11,4 +11,5 @@ struct OnboardingViewState {
     static var initial = OnboardingViewState()
     
     var screenNumber = 1
+    var isPushed = true
 }

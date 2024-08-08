@@ -34,12 +34,13 @@ struct OnboardingView: View {
         .navigationTitle("Onboarding View #\(store.state.screenNumber)")
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
-                Button {
-                    store.send(.dismissSheet)
-                    dismiss()
-                } label: {
-                    Image(systemName: "xmark")
-                        .imageScale(.large)
+                if !store.state.isPushed {
+                    Button {
+                        store.send(.dismissSheet(dismiss))
+                    } label: {
+                        Image(systemName: "xmark")
+                            .imageScale(.large)
+                    }
                 }
 
             }
