@@ -16,7 +16,6 @@ final class OnboardingCoordinator: Coordinator {
     var navigationController: NavigationController
     
     // MARK: private properties
-    private let eventSubject = PassthroughSubject<OnboardingCoordinatorEvent, Never>()
     private var isPushed: Bool = false
     
     @ViewBuilder @MainActor var rootView: some View {
@@ -64,12 +63,5 @@ extension OnboardingCoordinator {
         dismiss()
         dismiss()
         parent?.didFinish()
-    }
-}
-
-// MARK: - Event emitter
-extension OnboardingCoordinator: EventEmitting {
-    var eventPublisher: AnyPublisher<OnboardingCoordinatorEvent, Never> {
-        eventSubject.eraseToAnyPublisher()
     }
 }

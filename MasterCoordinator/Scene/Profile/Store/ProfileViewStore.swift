@@ -52,14 +52,12 @@ extension ProfileViewStore {
             coordinator.pushOnboarding()
             
         case .sheetOnboarding:
-            coordinator.presentSheet { [weak self] in
-                self?.coordinator.didFinish()
+            coordinator.presentSheet {
+                self.coordinator.didFinish()
             }
             
         case .coverOnboarding:
-            coordinator.presentCover { [weak self] in
-                self?.coordinator.didFinish()
-            }
+            coordinator.presentCover()
             
         case .alertButtonTapped:
             coordinator.presentAlert(

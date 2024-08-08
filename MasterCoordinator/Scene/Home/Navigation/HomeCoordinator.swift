@@ -89,14 +89,6 @@ extension HomeCoordinator {
             onboardingCoordinator = OnboardingCoordinator()
         }
         onboardingCoordinator?.parent = self
-        onboardingCoordinator?.eventPublisher.sink { [weak self] event in
-            switch event {
-            case let .dismiss(dismiss):
-                break
-                
-            }
-        }
-        .store(in: &cancellables)
     }
     
     func presentAlert<T>(_ alert: T) where T: AlertDisplayable {

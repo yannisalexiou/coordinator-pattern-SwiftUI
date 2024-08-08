@@ -15,6 +15,8 @@ struct ProfileView: View {
         self.store = store
     }
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         List {
             Button("Next") {

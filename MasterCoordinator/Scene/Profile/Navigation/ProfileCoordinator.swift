@@ -60,7 +60,8 @@ extension ProfileCoordinator {
             onboardingCoordinator?.rootView
         case .sheetOnboarding:
             if let onboardingCoordinator {
-                CoordinatedView(onboardingCoordinator).presentationDetents([.large, .medium])
+                CoordinatedView(onboardingCoordinator)
+                    .presentationDetents([.large, .medium])
             }
         case .coverOnboarding:
             if let onboardingCoordinator {
@@ -100,13 +101,6 @@ extension ProfileCoordinator {
             onboardingCoordinator = OnboardingCoordinator()
         }
         onboardingCoordinator?.parent = self
-        onboardingCoordinator?.eventPublisher.sink { [weak self] event in
-            switch event {
-            case .dismiss:
-                self?.didFinish()
-            }
-        }
-        .store(in: &cancellables)
     }
     
     func presentSheet(onDismiss: (() -> Void)? = nil) {
@@ -123,6 +117,8 @@ extension ProfileCoordinator {
 // MARK: - Handle child
 extension ProfileCoordinator: OnboardingCoordinatorParent {
     func didFinish() {
-        self.onboardingCoordinator = nil
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.onboardingCoordinator = nil
+        }
     }
 }

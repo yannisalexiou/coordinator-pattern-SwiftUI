@@ -67,7 +67,6 @@
 		F19AC6172C6272B0002E66B8 /* CoverContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AC6162C6272B0002E66B8 /* CoverContainer.swift */; };
 		F19AC6192C627309002E66B8 /* SheetModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AC6182C627309002E66B8 /* SheetModifier.swift */; };
 		F19AC61B2C627312002E66B8 /* CoverModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AC61A2C627312002E66B8 /* CoverModifier.swift */; };
-		F19AC61E2C627D8E002E66B8 /* OnboardingCoordinatorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AC61D2C627D8E002E66B8 /* OnboardingCoordinatorEvent.swift */; };
 		F19AC6202C627DC4002E66B8 /* EventEmitting.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19AC61F2C627DC4002E66B8 /* EventEmitting.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,7 +132,6 @@
 		F19AC6162C6272B0002E66B8 /* CoverContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverContainer.swift; sourceTree = "<group>"; };
 		F19AC6182C627309002E66B8 /* SheetModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetModifier.swift; sourceTree = "<group>"; };
 		F19AC61A2C627312002E66B8 /* CoverModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverModifier.swift; sourceTree = "<group>"; };
-		F19AC61D2C627D8E002E66B8 /* OnboardingCoordinatorEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinatorEvent.swift; sourceTree = "<group>"; };
 		F19AC61F2C627DC4002E66B8 /* EventEmitting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventEmitting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -252,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				F13566212C4E576E004A9E9B /* OnboardingCoordinator.swift */,
-				F19AC61D2C627D8E002E66B8 /* OnboardingCoordinatorEvent.swift */,
 				F19AC5E52C6264C8002E66B8 /* OnboardingCoordinatorParent.swift */,
 				F19AC5E32C6264B8002E66B8 /* OnboardingCoordinatorRoute.swift */,
 			);
@@ -537,7 +534,6 @@
 				F19AC6132C62728E002E66B8 /* SheetContainer.swift in Sources */,
 				F13566682C4E73E3004A9E9B /* TabBarCoordinatorEvent.swift in Sources */,
 				F135665A2C4E6BF0004A9E9B /* ProfileView.swift in Sources */,
-				F19AC61E2C627D8E002E66B8 /* OnboardingCoordinatorEvent.swift in Sources */,
 				F19AC6052C626D78002E66B8 /* CustomAlert.swift in Sources */,
 				F13566222C4E576E004A9E9B /* OnboardingCoordinator.swift in Sources */,
 				F135664A2C4E69A7004A9E9B /* OnboardingViewState.swift in Sources */,
