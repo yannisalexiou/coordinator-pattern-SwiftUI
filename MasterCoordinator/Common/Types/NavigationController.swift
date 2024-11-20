@@ -7,13 +7,15 @@
 
 import Foundation
 import SwiftUI
-import Observation
 
-@Observable
-final class NavigationController {
+final class NavigationController: ObservableObject {
+    @Published
     var navigationPath: NavigationPath = .init()
+    @Published
     var alertPath = AlertPath()
+    @Published
     var sheetPath: SheetPath = .init()
+    @Published
     var coverPath: CoverPath = .init()
     
     var screenCount: Int {

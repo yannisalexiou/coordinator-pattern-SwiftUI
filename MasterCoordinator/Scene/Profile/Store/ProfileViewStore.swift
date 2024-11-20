@@ -6,10 +6,8 @@
 //
 
 import Combine
-import Observation
 
-@Observable
-final class ProfileViewStore: Store {
+final class ProfileViewStore: Store, ObservableObject {
     // MARK: Public properties
     @MainActor var state: ProfileViewState = .initial
     

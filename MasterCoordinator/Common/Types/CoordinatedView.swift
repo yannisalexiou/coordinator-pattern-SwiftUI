@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct CoordinatedView<C>: View where C: Coordinator {
-    var coordinator: C
+    private let coordinator: C
+    @StateObject
+    private var navigationController: NavigationController
     
     init(_ coordinator: C) {
         self.coordinator = coordinator
+        _navigationController = StateObject(wrappedValue: coordinator.navigationController)
     }
     
     var body: some View {
-        @Bindable var navigationController = coordinator.navigationController
         NavigationStack(path: $navigationController.navigationPath) {
             coordinator.rootView
         }

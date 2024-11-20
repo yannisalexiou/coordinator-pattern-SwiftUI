@@ -6,10 +6,8 @@
 //
 
 import Combine
-import Observation
 
-@Observable
-final class OnboardingViewStore: Store {
+final class OnboardingViewStore: Store, ObservableObject {
     @MainActor var state: OnboardingViewState = .initial
     
     private let coordinator: OnboardingCoordinator

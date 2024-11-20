@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Combine
-import Observation
 
 protocol FeedCoordinatorParent: AnyObject {
     func selectTab(_ tab: TabBarItem)
@@ -20,7 +19,6 @@ enum FeedCoordinatorRoute: Int, Codable, Hashable {
     case secondDetail
 }
 
-@Observable
 final class FeedCoordinator: Coordinator {
     
     private var cancellables = Set<AnyCancellable>()

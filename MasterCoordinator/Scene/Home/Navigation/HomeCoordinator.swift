@@ -7,18 +7,16 @@
 
 import SwiftUI
 import Combine
-import Observation
 import os
 
-@Observable
 final class HomeCoordinator: Coordinator {
-    let navigationController = NavigationController()
-    
     private let eventSubject = PassthroughSubject<HomeCoordinatorEvent, Never>()
     private var cancellables = Set<AnyCancellable>()
     
-    var onboardingCoordinator: OnboardingCoordinator?
-    var presentationDetents: Set<PresentationDetent> = [.fraction(0.999), .medium]
+    private var onboardingCoordinator: OnboardingCoordinator?
+    private var presentationDetents: Set<PresentationDetent> = [.fraction(0.999), .medium]
+    
+    let navigationController = NavigationController()
     
     @ViewBuilder @MainActor var rootView: some View {
         HomeView(store: HomeViewStore(coordinator: self, screenNumber: 1))

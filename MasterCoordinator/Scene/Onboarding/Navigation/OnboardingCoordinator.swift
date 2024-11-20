@@ -7,9 +7,7 @@
 
 import SwiftUI
 import Combine
-import Observation
 
-@Observable
 final class OnboardingCoordinator: Coordinator {
     // MARK: Public properties
     weak var parent: OnboardingCoordinatorParent?

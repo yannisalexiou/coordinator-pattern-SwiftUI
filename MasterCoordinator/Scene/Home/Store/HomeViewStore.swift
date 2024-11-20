@@ -6,11 +6,9 @@
 //
 
 import Combine
-import Observation
 import SwiftUI
 
-@Observable
-final class HomeViewStore: Store {
+final class HomeViewStore: Store, ObservableObject {
     // MARK: Public properties
     @MainActor var state: HomeViewState = .initial
     

@@ -7,9 +7,7 @@
 
 import SwiftUI
 import Combine
-import Observation
 
-@Observable
 final class ProfileCoordinator: Coordinator {
     // MARK: Private properties
     private let eventSubject = PassthroughSubject<ProfileCoordinatorEvent, Never>()

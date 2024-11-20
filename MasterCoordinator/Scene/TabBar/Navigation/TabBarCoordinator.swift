@@ -8,9 +8,7 @@
 import SwiftUI
 import Combine
 
-@Observable
 final class TabBarCoordinator: ObservableObject {
-    
     // MARK: private properties
     private var cancellables = Set<AnyCancellable>()
     private let eventSubject = PassthroughSubject<TabBarCoordinatorEvent, Never>()

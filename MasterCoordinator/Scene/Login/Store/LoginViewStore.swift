@@ -6,10 +6,8 @@
 //
 
 import Combine
-import Observation
 
-@Observable
-final class LoginViewStore: Store {
+final class LoginViewStore: Store, ObservableObject {
     // MARK: Public properties
     @MainActor var state: LoginViewState = .initial
     

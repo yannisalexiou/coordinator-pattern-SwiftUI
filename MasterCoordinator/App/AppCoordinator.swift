@@ -8,17 +8,19 @@
 import Combine
 import SwiftUI
 
-@Observable
-final class AppCoordinator {
+final class AppCoordinator: ObservableObject {
     // MARK: private properties
     private var cancellables = Set<AnyCancellable>()
     private var tabBarCoordinator: TabBarCoordinator?
     private var loginCoordinator: LoginCoordinator?
     
     // MARK: Public properties
+    @Published
     var isOnboarding: Bool = true
     
-    @MainActor @ViewBuilder var rootView: some View {
+    @MainActor
+    @ViewBuilder
+    var rootView: some View {
         if isOnboarding {
             if let loginCoordinator {
                 loginCoordinator.rootView

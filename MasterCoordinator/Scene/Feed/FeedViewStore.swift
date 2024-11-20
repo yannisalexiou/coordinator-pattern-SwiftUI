@@ -6,7 +6,6 @@
 //
 
 import Combine
-import Observation
 
 enum FeedViewAction {
     case nextButtonTapped
@@ -15,8 +14,7 @@ enum FeedViewAction {
     case logoutButtonTapped
 }
 
-@Observable
-final class FeedViewStore {
+final class FeedViewStore: ObservableObject {
     
     private let coordinator: FeedCoordinator
     

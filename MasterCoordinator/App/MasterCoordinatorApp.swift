@@ -9,8 +9,13 @@ import SwiftUI
 
 @main
 struct MasterCoordinatorApp: App {
+    @StateObject
+    var coordinator = AppCoordinator()
     
-    let coordinator = AppCoordinator()
+    init() {
+        let appCoordinator = AppCoordinator()
+        _coordinator = StateObject(wrappedValue: appCoordinator)
+    }
     
     var body: some Scene {
         WindowGroup {

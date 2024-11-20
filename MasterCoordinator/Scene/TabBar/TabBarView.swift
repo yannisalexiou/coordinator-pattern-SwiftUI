@@ -9,9 +9,16 @@ import SwiftUI
 
 struct TabBarView: View {
     
-    let coordinator: TabBarCoordinator
+    @StateObject
+    private var coordinator: TabBarCoordinator
+    
+    public init(
+        coordinator: TabBarCoordinator
+    ) {
+        _coordinator = StateObject(wrappedValue: coordinator)
+    }
+    
     var body: some View {
-        @Bindable var coordinator = coordinator
         TabView(selection: $coordinator.selectedTab) {
             ForEach(self.coordinator.tabs, id: \.self) { tab in
                 switch tab {
